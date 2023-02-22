@@ -1,0 +1,13 @@
+﻿@model MoviesLand.Models.Customer
+
+<div class="container">
+    <h3>Customer Details</h3>
+    <ul>
+        <li><strong>Id: </strong>@Model.Id</li>
+        <li><strong>Name: </strong> @Model.Name</li>
+        <li><strong>Date of Birth: </strong> @Model.Birthdate</li>
+        <li><strong>Subscripted: </strong>@Model.IsSubscribedToNewsletter</li>
+        <li><strong>SubscriptionId: </strong>@Model.MembershipTypeId</li>
+        <li><strong>Subscription Name: </strong>@Model.MembershipType.Name</li>
+    </ul>
+</div>

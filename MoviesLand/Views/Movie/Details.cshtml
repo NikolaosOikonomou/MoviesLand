@@ -1,0 +1,13 @@
+﻿@model MoviesLand.Models.Movie
+
+<div class="container">
+    <h3>Movie Details</h3>
+    <ul>
+        <li><strong>Id: </strong>@Model.Id</li>
+        <li><strong>Title: </strong> @Model.Title</li>
+        <li><strong>Genre: </strong> @Model.Genre.Name</li>
+        <li><strong>Release Date: </strong>@Model.ReleaseDate</li>
+        <li><strong>Date Added: </strong>@Model.DateAdded</li>
+        <li><strong>Number in Stock: </strong>@Model.NumberInStock</li>
+    </ul>
+</div>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MoviesLand.Models.Movie>
+
+
+
+<div class="">
+    <table class="table table-hover ">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                Stock
+            </th>
+        </tr>
+
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(movie.Title, "Details", new { movie.Id }, null)
+                </td>
+                <td>
+                    @movie.NumberInStock
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<style>
+    .table {
+        margin: auto;
+        width: 60%;
+    }
+</style>
