@@ -6,8 +6,8 @@
         <li><strong>Id: </strong>@Model.Id</li>
         <li><strong>Title: </strong> @Model.Title</li>
         <li><strong>Genre: </strong> @Model.Genre.Name</li>
-        <li><strong>Release Date: </strong>@Model.ReleaseDate</li>
-        <li><strong>Date Added: </strong>@Model.DateAdded</li>
+        <li><strong>Release Date: </strong>@Html.DisplayFor(m => m.ReleaseDate, "{0:d MMM yyyy}", null)</li>
+        <li><strong>Date Added: </strong>@Html.DisplayFor(m => m.DateAdded, "{0:d MMM yyyy}", null)</li>
         <li><strong>Number in Stock: </strong>@Model.NumberInStock</li>
     </ul>
 </div>

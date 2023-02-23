@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoviesLand.Models.Vilidations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,7 +15,9 @@ namespace MoviesLand.Models
         [StringLength(255)]
         public string Name { get; set; }
 
+        [Min18YearsIfAMember]
         [Display(Name = "Date of Birth")]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime? Birthdate { get; set; }
 
         public bool IsSubscribedToNewsletter { get; set; }

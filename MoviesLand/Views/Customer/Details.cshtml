@@ -5,7 +5,7 @@
     <ul>
         <li><strong>Id: </strong>@Model.Id</li>
         <li><strong>Name: </strong> @Model.Name</li>
-        <li><strong>Date of Birth: </strong> @Model.Birthdate</li>
+        <li><strong>Date of Birth: </strong> @Html.DisplayFor(m => m.Birthdate, "{0:d MMM yyyy}", null)</li>
         <li><strong>Subscripted: </strong>@Model.IsSubscribedToNewsletter</li>
         <li><strong>SubscriptionId: </strong>@Model.MembershipTypeId</li>
         <li><strong>Subscription Name: </strong>@Model.MembershipType.Name</li>
