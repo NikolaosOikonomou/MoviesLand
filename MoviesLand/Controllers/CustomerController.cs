@@ -11,22 +11,22 @@ namespace MoviesLand.Controllers
 {
     public class CustomerController : Controller
     {
-        private ApplicationDbContext db;
+        private ApplicationDbContext _context;
 
         public CustomerController()
         {
-            db = new ApplicationDbContext();
+            _context = new ApplicationDbContext();
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            _context.Dispose();
         }
 
         // GET: Customer
         public ActionResult Index()
         {
-            var customers = db.Customers
+            var customers = _context.Customers
                 .Include(c => c.MembershipType)
                 .ToList();
             return View(customers);
@@ -34,7 +34,7 @@ namespace MoviesLand.Controllers
 
         public ActionResult Details(int id)
         {
-            var customer = db.Customers
+            var customer = _context.Customers
                 .Include(c => c.MembershipType)
                 .SingleOrDefault(x => x.Id == id);
             return View(customer);
@@ -42,7 +42,7 @@ namespace MoviesLand.Controllers
 
         public ActionResult New()
         {
-            var membershipTypes = db.MembershipTypes.ToList();
+            var membershipTypes = _context.MembershipTypes.ToList();
             var viewModel = new CustomerFormViewModel
             {
                 MembershipTypes = membershipTypes
@@ -59,36 +59,36 @@ namespace MoviesLand.Controllers
                 var viewModel = new CustomerFormViewModel
                 {
                     Customer = customer,
-                    MembershipTypes = db.MembershipTypes.ToList()
+                    MembershipTypes = _context.MembershipTypes.ToList()
                 };
                 return View("CustomerForm", viewModel);
             }
             if (customer.Id == 0)
             {
-                db.Customers.Add(customer);
+                _context.Customers.Add(customer);
             }
             else
             {
-                var customerInDb = db.Customers.Single(x => x.Id == customer.Id);
+                var customerInDb = _context.Customers.Single(x => x.Id == customer.Id);
                 customerInDb.Name = customer.Name;
                 customerInDb.Birthdate = customer.Birthdate;
                 customerInDb.MembershipTypeId = customer.MembershipTypeId;
                 customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
             }
-            db.SaveChanges();
+            _context.SaveChanges();
             return RedirectToAction("Index", "Customer");
         }
 
         public ActionResult Edit(int id)
         {
-            var customer = db.Customers.SingleOrDefault(x => x.Id == id);
+            var customer = _context.Customers.SingleOrDefault(x => x.Id == id);
             if (customer == null)
                 new HttpNotFoundResult();
 
             var viewCustomer = new CustomerFormViewModel
             {
                 Customer = customer,
-                MembershipTypes = db.MembershipTypes
+                MembershipTypes = _context.MembershipTypes
             };
             return View("CustomerForm", viewCustomer);
         }
