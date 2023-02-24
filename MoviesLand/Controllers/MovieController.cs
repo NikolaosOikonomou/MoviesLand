@@ -9,6 +9,7 @@ using MoviesLand.ViewModels;
 
 namespace MoviesLand.Controllers
 {
+    [Authorize(Roles = RoleName.CanManageMovies)]
     public class MovieController : Controller
     {
         private ApplicationDbContext _context;
@@ -24,18 +25,23 @@ namespace MoviesLand.Controllers
         }
 
         // GET: Movie
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var movies = _context.Movies
                   .Include(m => m.Genre)
                   .ToList();
-            return View(movies);
+            if (User.IsInRole(RoleName.CanManageMovies))
+            {
+                return View("Index", movies);
+            }
+            return View("IndexReadOnly", movies);
         }
 
         public ActionResult Details(int id)
         {
             var movie = _context.Movies
-                .Include(m =>m.Genre)
+                .Include(m => m.Genre)
                 .SingleOrDefault(m => m.Id == id);
             return View(movie);
         }
