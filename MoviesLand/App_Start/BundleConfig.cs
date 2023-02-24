@@ -12,7 +12,9 @@ namespace MoviesLand
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/bootbox.js",
-                        "~/Scripts/respond.js"));
+                        "~/Scripts/respond.js",
+                        "~/Scripts/datatables/jquery.datatables.js",
+                        "~/Scripts/datatables/datatables.bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -24,6 +26,7 @@ namespace MoviesLand
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-paper.css",
+                      "~/Scripts/datatables/css/datatables.bootstrap.css",
                       "~/Content/site.css"));
         }
     }
