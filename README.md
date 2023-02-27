@@ -4,9 +4,9 @@ Implement MVC methologies to create a movie store application. Main entities are
 CRUD methology in both entities. Delete action through ajax call. 
 
 Implement Authentication Authorization methology with guest and CanManageMovies roles. 
-Log in with facebook 
+Log in with facebook as well
 
-Forms created with razor syntax, displaying validation massages accordingly (having custom valdiotion as well). 
+Forms created with razor syntax, displaying validation massages accordingly (also having custom valdiotion). 
 
 Api controller for Customer with dto and auto mapper. 
 
